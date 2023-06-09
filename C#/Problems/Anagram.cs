@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Practice.Problems
@@ -48,7 +49,7 @@ namespace Practice.Problems
         {
             Debug.LineSplit();
             Debug.Write("Checks if list are anagrams");
-
+            // STAC
             List<string> Input = new()
             {
                 "Dog",
@@ -69,19 +70,29 @@ namespace Practice.Problems
                 "eht"
             };
 
+            Dictionary<string, int> FinalResult = new();
+
             foreach (var ItemInput in Input)
             {
                 foreach (var ItemExpected in Expected)
                 {
-                    var NormalizedInput = ItemInput.ToLower().Reverse();
-                    var NormalizedOutput = ItemExpected.ToLower().Reverse();
-                    var NIMatch = new string(NormalizedInput.ToArray());
-                    var NOMatch = new string(NormalizedOutput.ToArray());
+                    var NormalizedInput = ItemInput.ToLower().ToCharArray();
+                    var NormalizedOutput = ItemExpected.ToLower().ToCharArray();
+                    var NIMatch = new string(NormalizedInput.OrderBy(x => x).ToArray());
+                    var NOMatch = new string(NormalizedOutput.OrderBy(x => x).ToArray());
 
                     if (NIMatch.Length == NOMatch.Length)
                         if (NOMatch.Contains(NIMatch))
-                            Debug.Result($"{NIMatch} - {NOMatch}");
+                        {
+                            if (!FinalResult.TryAdd(ItemInput, 1))
+                                FinalResult[ItemInput] = FinalResult[ItemInput] + 1;
+                        }
                 }
+            }
+
+            foreach (var Item in FinalResult)
+            {
+                Debug.Result($"{Item.Key} - seen {Item.Value} time(s)");
             }
         }
     }
