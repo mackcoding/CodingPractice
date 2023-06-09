@@ -17,8 +17,12 @@ namespace Practice
             Debug.Write("2) Fizzbuzz");
             Debug.Write("3) Reverse String");
             Debug.Write("4) Anagram");
-            Debug.Write("5) Atoi");
-
+            Debug.Write("5) Anagram List");
+            Debug.Write("6) Atoi");
+            Debug.Write("7) ");
+            Debug.Write("8) ");
+            Debug.Write("9) ");
+            Debug.Write("10) ");
             Debug.LineSplit();
 
             Console.Write("Select Option: ");
@@ -39,6 +43,9 @@ namespace Practice
                     Anagram.Run();
                     break;
                 case 5:
+                    Anagram.SingleRun();
+                    break;
+                case 6:
                     Atoi.Run();
                     break;
                 default:

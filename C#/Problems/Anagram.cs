@@ -31,7 +31,7 @@ namespace Practice.Problems
             if (Input1.Length.Equals(Input2.Length))
             {
                 // Sort the inputs
-                var Input1Sorted = new string(Input1.OrderBy(x=>x).ToArray()); 
+                var Input1Sorted = new string(Input1.OrderBy(x => x).ToArray());
                 var Input2Sorted = new string(Input2.OrderBy(x => x).ToArray());
 
                 // If the arrays match each other, they are anagrams. Otherwise, they are not
@@ -41,7 +41,48 @@ namespace Practice.Problems
             else IsAnagram = false; // Not similar; so false.
 
             Debug.Result($"{Input1} and {Input2} are anagrams: {IsAnagram}");
-            
+
+        }
+
+        public static void SingleRun()
+        {
+            Debug.LineSplit();
+            Debug.Write("Checks if list are anagrams");
+
+            List<string> Input = new()
+            {
+                "Dog",
+                "CATS",
+                "satc",
+                "the",
+                "tacS",
+                "them",
+                "eht"
+            };
+
+            List<string> Expected = new()
+            {
+                "CATS",
+                "satc",
+                "the",
+                "tacS",
+                "eht"
+            };
+
+            foreach (var ItemInput in Input)
+            {
+                foreach (var ItemExpected in Expected)
+                {
+                    var NormalizedInput = ItemInput.ToLower().Reverse();
+                    var NormalizedOutput = ItemExpected.ToLower().Reverse();
+                    var NIMatch = new string(NormalizedInput.ToArray());
+                    var NOMatch = new string(NormalizedOutput.ToArray());
+
+                    if (NIMatch.Length == NOMatch.Length)
+                        if (NOMatch.Contains(NIMatch))
+                            Debug.Result($"{NIMatch} - {NOMatch}");
+                }
+            }
         }
     }
 }
