@@ -49,7 +49,7 @@ namespace Practice.Problems
         {
             Debug.LineSplit();
             Debug.Write("Checks if list are anagrams");
-            // STAC
+
             List<string> Input = new()
             {
                 "Dog",
