@@ -19,8 +19,8 @@ namespace Practice
             Debug.Write("4) Anagram");
             Debug.Write("5) Anagram List");
             Debug.Write("6) Atoi");
-            Debug.Write("7) ");
-            Debug.Write("8) ");
+            Debug.Write("7) Find hour based on hour hand angle");
+            Debug.Write("8) Find angle between the hour/minute hands (h, m)");
             Debug.Write("9) ");
             Debug.Write("10) ");
             Debug.LineSplit();
@@ -47,6 +47,12 @@ namespace Practice
                     break;
                 case 6:
                     Atoi.Run();
+                    break;
+                case 7:
+                    HourHand.Run();
+                    break;
+                case 8:
+                    HourHand.RunAngleToHour();
                     break;
                 default:
                     Debug.Write("Invalid Command");
